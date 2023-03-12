@@ -17,7 +17,10 @@ userRouter.post(
   userController.create
 );
 
-userRouter.get("", validateTokenMdwr, isAdminMdwr, userController.readAll);
+userRouter.get("",
+    validateTokenMdwr,
+    isAdminMdwr,
+    userController.readAll);
 
 userRouter.patch(
   "/:id",
