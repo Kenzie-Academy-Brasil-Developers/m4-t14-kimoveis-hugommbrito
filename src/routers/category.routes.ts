@@ -1,5 +1,6 @@
 import { Router } from "express";
 import { categoryController } from "../controllers";
+import { isCategIdValidMdwr } from "../middlewares/categories/isCategIdValid.middleware";
 import { isCategUniqueMdwr } from "../middlewares/categories/isCategUnique.middlewares";
 import { isAdminMdwr } from "../middlewares/user/isAdmin.middleware";
 import { validateTokenMdwr } from "../middlewares/user/validateToken.middleware";
@@ -17,3 +18,7 @@ categRouter.post('',
 
 categRouter.get('', 
     categoryController.read)
+
+categRouter.get('/:id/realEstate',
+    isCategIdValidMdwr, 
+    categoryController.readById)

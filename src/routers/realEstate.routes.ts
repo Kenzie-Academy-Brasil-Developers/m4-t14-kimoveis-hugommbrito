@@ -15,3 +15,5 @@ realEstateRouter.post('',
     isAddressUniqueMdwr,
     realEstateAddressController.create)
 
+realEstateRouter.get('',
+    realEstateAddressController.read)

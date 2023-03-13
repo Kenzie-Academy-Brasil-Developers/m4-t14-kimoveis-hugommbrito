@@ -27,46 +27,18 @@ const create = async (payload: iRE_postRequest): Promise<iRE_postReturn> => {
 
 }
 
-export default { create }
-// import { AppDataSource } from "../data-source"
-// import { Address, Category, RealEstate } from "../entities"
-// import { iCategRepo } from "../interfaces/category.interface"
-// import { iAD_Create, iAD_Repo, iRE_AD_Post, iRE_Create, iRE_Repo } from "../interfaces/realEstateAddress.interface"
-// import realEstateAddressSchema from "../schemas/realEstateAddress.schema"
+const read = async (): Promise<iRE_postReturn[]> => {
+    const RERepo: iRE_Repo = AppDataSource.getRepository(RealEstate)
+    const ADRepo: iAD_Repo = AppDataSource.getRepository(Address)
+    const categRepo: iCategRepo = AppDataSource.getRepository(Category)
 
-// const create = async (payload: any) => { //TIPAR O RETORNO e o PAYLOAD
-//     console.log('aqui 1');
-//     const addressRepository: iAD_Repo = AppDataSource.getRepository(Address)
-//     const addressRequest: iAD_Create = {address: payload.address}
-//     console.log('aqui 2');
-//     let addressCreate = addressRepository.create(addressRequest.address) //tipar o retorno
-//     const newAddress = await addressRepository.save(addressCreate)
+    const realStateList = await RERepo.find({
+        relations: {
+            address: true,
+        }
+    })
 
-//     const categRepository: iCategRepo = AppDataSource.getRepository(Category)
-//     const category = await categRepository.findOneBy({ id: payload.categoryId })
-//     console.log(category);
+    return realStateList
+}
 
-//     const realEstateRepository: iRE_Repo = AppDataSource.getRepository(RealEstate)
-//     let realEstateRequest = payload // TIPAR
-//     realEstateRequest.address = newAddress
-//     realEstateRequest.category = category!
-//     console.log(realEstateRequest);
-//     let realEstateCreate = realEstateRepository.create(realEstateRequest) //tipar o retorno
-//     console.log(realEstateCreate);
-
-//     const newRealEstate = await realEstateRepository.save(realEstateCreate) 
-
-//     const realEstateReturn = await realEstateRepository.findOne({
-//         where: {
-//             id: realEstateCreate.id
-//         },
-//         relations: {
-//             address: true,
-//             category: true
-//         }
-//     }) //TIPAR
-
-//     return newRealEstate
-// } 
-
-// export default { create }
+export default { create, read }

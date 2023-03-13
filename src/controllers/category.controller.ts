@@ -1,6 +1,7 @@
 import { Request, Response } from "express"
 import { Category } from "../entities"
 import { iCategReturned } from "../interfaces/category.interface"
+import { iRE_postReturn } from "../interfaces/realEstateAddress.interface"
 import { categoryService } from "../services"
 
 const create = async (req: Request, res: Response): Promise<Response> => {
@@ -13,4 +14,9 @@ const read = async (req: Request, res: Response): Promise<Response> => {
     return res.status(200).json(categList)
 }
 
-export default { create, read }
+const readById = async (req: Request, res: Response): Promise<Response> => {
+    const REList: iCategReturned = await categoryService.readById(Number(req.params.id))
+    return res.status(200).json(REList)
+}
+
+export default { create, read, readById }

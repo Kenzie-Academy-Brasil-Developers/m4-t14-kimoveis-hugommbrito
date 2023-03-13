@@ -17,17 +17,17 @@ export class RealEstate{
     @Column({ type: 'boolean', default: false })
     sold: boolean
 
-    @CreateDateColumn()
+    @CreateDateColumn({ type: 'text'})
     createdAt: string
 
-    @UpdateDateColumn()
+    @UpdateDateColumn({ type: 'text'})
     updatedAt: string
 
     @OneToOne(() => Address)
     @JoinColumn()
     address: Address
 
-    @ManyToOne(() => Category, (category) => category.realEstates )
+    @ManyToOne(() => Category, (category) => category.realEstate )
     category: Category
 
     @OneToMany(() => ScheduleUserProperty, (schedule) => schedule.realEstate)
