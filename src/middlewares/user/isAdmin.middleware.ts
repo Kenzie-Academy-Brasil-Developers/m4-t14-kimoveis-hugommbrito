@@ -6,7 +6,7 @@ export const isAdminMdwr = async (
   res: Response,
   next: NextFunction
 ): Promise<void> => {
-  if (!req.user.isAdmin) {
+  if (!req.user.admin) {
     throw new AppError("Insufficient permission", 403);
   }
 

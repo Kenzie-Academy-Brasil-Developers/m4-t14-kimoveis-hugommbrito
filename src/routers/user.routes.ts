@@ -11,32 +11,30 @@ import { userSchema } from "../schemas";
 export const userRouter = Router();
 
 userRouter.post(
-  "",
-  validateDataMdwr(userSchema.post),
-  isEmailUniqueMdwr,
-  userController.create
+    "",
+    validateDataMdwr(userSchema.post),
+    isEmailUniqueMdwr,
+    userController.create
 );
 
-userRouter.get("",
-    validateTokenMdwr,
-    isAdminMdwr,
-    userController.readAll);
+userRouter.get("", validateTokenMdwr, isAdminMdwr, userController.readAll);
 
 userRouter.patch(
-  "/:id",
-  validateDataMdwr(userSchema.patch),
-  validateTokenMdwr,
-  isIdValidMdwr,
-  validateIdAuthToUpdateMdwr,
-  userController.update
+    "/:id",
+    validateTokenMdwr,
+    isIdValidMdwr,
+    validateIdAuthToUpdateMdwr,
+    validateDataMdwr(userSchema.patch),
+    isEmailUniqueMdwr,
+    userController.update
 );
 
 userRouter.delete(
-  "/:id",
-  validateTokenMdwr,
-  isIdValidMdwr,
-  isAdminMdwr,
-  userController.deleter
+    "/:id",
+    validateTokenMdwr,
+    isIdValidMdwr,
+    isAdminMdwr,
+    userController.deleter
 );
 
 // userRouter.post('',)

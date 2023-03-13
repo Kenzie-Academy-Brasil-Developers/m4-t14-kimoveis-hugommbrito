@@ -5,7 +5,7 @@ declare global {
         interface Request {
             user: {
                 id: number,
-                isAdmin: boolean,
+                admin: boolean,
                 deletedAt: string | Date | null
             }
         }

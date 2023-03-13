@@ -19,14 +19,14 @@ export class User{
     @Column({ type: 'boolean', default: false })
     admin: boolean
 
-    @CreateDateColumn({ type: 'text'})
-    createdAt: Date
+    @CreateDateColumn({ type: 'date'})
+    createdAt: string
 
-    @UpdateDateColumn({ type: 'text'})
-    updatedAt: Date
+    @UpdateDateColumn({ type: 'date'})
+    updatedAt: string
 
-    @DeleteDateColumn({ type: 'text'})
-    deletedAt: Date
+    @DeleteDateColumn({ type: 'date'})
+    deletedAt: string
 
     @OneToMany(() => ScheduleUserProperty, (schedule) => schedule.user)
     scheduleUserProperty: ScheduleUserProperty[]
@@ -34,12 +34,11 @@ export class User{
     @BeforeInsert()
     @BeforeUpdate()
     hashPassword(){
-        // const isEncripted = getRounds(this.password)
-
-        // if(!isEncripted){
-        //     this.password = hashSync(this.password, 10)
-        // }
+        const isEncripted = getRounds(this.password)
+        if(!isEncripted){
             this.password = hashSync(this.password, 10)
+        }
+            // this.password = hashSync(this.password, 10)
     }
 
 }

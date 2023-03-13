@@ -7,7 +7,7 @@ import { iUserRepo } from '../interfaces/user.interface'
 import jwt from 'jsonwebtoken'
 import 'dotenv/config'
 
-const login = async (payload: iAuthLogin): Promise<iAuthToken> => {
+const login = async (payload: iAuthLogin): Promise<string> => {
     const userRepository: iUserRepo = AppDataSource.getRepository(User)
 
     const loggedUser: User | null = await userRepository.findOne({
@@ -27,7 +27,7 @@ const login = async (payload: iAuthLogin): Promise<iAuthToken> => {
     }
     // console.log(loggedUser);
     
-    const jwtGenerated: string = jwt.sign(
+    const token: string = jwt.sign(
         {
             id: loggedUser.id,
             admin: loggedUser.admin,
@@ -40,9 +40,9 @@ const login = async (payload: iAuthLogin): Promise<iAuthToken> => {
         }
     )
 
-    const token: iAuthToken = {
-        token: jwtGenerated
-    }
+    // const token: iAuthToken = {
+    //     token: jwtGenerated
+    // }
 
     return token
 

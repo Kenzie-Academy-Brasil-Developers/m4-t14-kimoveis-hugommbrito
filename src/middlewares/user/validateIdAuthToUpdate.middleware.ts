@@ -1,12 +1,14 @@
 import { NextFunction, Request, Response } from "express";
 import { AppError } from "../../errors";
 
-export const validateIdAuthToUpdateMdwr = async ( req: Request, res: Response, next: NextFunction ): Promise<void> => {
-    if (req.user.isAdmin) {
-        return next();
-    }
+export const validateIdAuthToUpdateMdwr = async (
+    req: Request,
+    res: Response,
+    next: NextFunction
+): Promise<void> => {
+    const { id, admin } = req.user;
 
-    if (req.user.id != Number(req.params.id)) {
+    if (!admin && id != Number(req.params.id)) {
         throw new AppError("Insufficient permission", 403);
     }
 
