@@ -7,9 +7,10 @@ import { iRE_Repo } from "../../interfaces/realEstateAddress.interface";
 
 export const isRE_IdValidMdwr = async ( req: Request, res: Response, next: NextFunction ): Promise<void> => {
     const RE_Repo: iRE_Repo = AppDataSource.getRepository(RealEstate);
+    const RE_Id: number = Number(req.body.realEstateId) || Number(req.params.id)
     const IdExistis = await RE_Repo.findOne({
         where: {
-            id: Number(req.body.realEstateId),
+            id: RE_Id,
         },
     });
 

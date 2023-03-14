@@ -1,6 +1,6 @@
 import { AppDataSource } from "../data-source";
 import { RealEstate, Schedule, User } from "../entities";
-import { iRE_Repo } from "../interfaces/realEstateAddress.interface";
+import { iRE_postReturn, iRE_Repo } from "../interfaces/realEstateAddress.interface";
 import { iSchedulePostRequest, iScheduleRepo, iScheduleReturned } from "../interfaces/schedule.interface";
 import { iUserRepo } from "../interfaces/user.interface";
 
@@ -24,4 +24,22 @@ const create = async (payload: iSchedulePostRequest, userId: number): Promise<st
 
 }
 
-export default { create }
+const readByRE_Id = async (RE_Id: number): Promise<iRE_postReturn> => {
+    const RE_Repo: iRE_Repo = AppDataSource.getRepository(RealEstate)
+    const RESchedules = await RE_Repo.findOneOrFail({
+        where:{
+            id: RE_Id
+        },
+        relations:{
+            address: true,
+            category: true,
+            schedules:{
+                user: true
+            },
+        },
+    })
+
+    return RESchedules
+}
+
+export default { create, readByRE_Id }
