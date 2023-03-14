@@ -1,5 +1,5 @@
-import { AppDataSource } from "./data-source"
-import app from "./app"
+import { AppDataSource } from './data-source'
+import app from './app'
 import 'dotenv/config'
 
 
@@ -15,3 +15,4 @@ AppDataSource.initialize()
         })
     })
     .catch((err) => console.error(err))
+    

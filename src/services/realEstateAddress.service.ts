@@ -1,7 +1,7 @@
-import { AppDataSource } from "../data-source"
-import { Address, Category, RealEstate } from "../entities"
-import { iCategRepo } from "../interfaces/category.interface"
-import { iAD_Repo, iRE_postRequest, iRE_postReturn, iRE_Repo } from "../interfaces/realEstateAddress.interface"
+import { AppDataSource } from '../data-source'
+import { Address, Category, RealEstate } from '../entities'
+import { iCategRepo } from '../interfaces/category.interface'
+import { iAD_Repo, iRE_postRequest, iRE_postReturn, iRE_Repo } from '../interfaces/realEstateAddress.interface'
 
 const create = async (payload: iRE_postRequest): Promise<iRE_postReturn> => {
     const RERepo: iRE_Repo = AppDataSource.getRepository(RealEstate)

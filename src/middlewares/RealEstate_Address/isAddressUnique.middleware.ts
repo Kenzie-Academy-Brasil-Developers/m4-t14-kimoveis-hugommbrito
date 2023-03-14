@@ -1,8 +1,8 @@
-import { NextFunction, Request, Response } from "express"
-import { AppDataSource } from "../../data-source"
-import { Address } from "../../entities"
-import { AppError } from "../../errors"
-import { iAD_Repo } from "../../interfaces/realEstateAddress.interface"
+import { NextFunction, Request, Response } from 'express'
+import { AppDataSource } from '../../data-source'
+import { Address } from '../../entities'
+import { AppError } from '../../errors'
+import { iAD_Repo } from '../../interfaces/realEstateAddress.interface'
 
 export const isAddressUniqueMdwr = async ( req: Request, res: Response, next: NextFunction ): Promise<void> => {
     const ADRepository: iAD_Repo = AppDataSource.getRepository(Address)
@@ -24,3 +24,4 @@ export const isAddressUniqueMdwr = async ( req: Request, res: Response, next: Ne
   
     return next()
   }
+  

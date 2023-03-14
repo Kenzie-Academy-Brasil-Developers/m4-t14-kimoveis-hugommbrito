@@ -1,8 +1,7 @@
-import { Request, Response } from "express"
-import { Category } from "../entities"
-import { iCategReturned } from "../interfaces/category.interface"
-import { iRE_postReturn } from "../interfaces/realEstateAddress.interface"
-import { categoryService } from "../services"
+import { Request, Response } from 'express'
+import { Category } from '../entities'
+import { iCategReturned } from '../interfaces/category.interface'
+import { categoryService } from '../services'
 
 const create = async (req: Request, res: Response): Promise<Response> => {
     const newCateg: iCategReturned = await categoryService.create(req.body)

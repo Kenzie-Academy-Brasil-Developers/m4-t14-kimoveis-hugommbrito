@@ -1,7 +1,7 @@
-import { AppDataSource } from "../data-source"
-import { Category, RealEstate } from "../entities"
-import { iCategIdRE_Return, iCategPost, iCategRepo, iCategReturned } from "../interfaces/category.interface"
-import { iRE_Repo } from "../interfaces/realEstateAddress.interface"
+import { AppDataSource } from '../data-source'
+import { Category, RealEstate } from '../entities'
+import { iCategPost, iCategRepo, iCategReturned } from '../interfaces/category.interface'
+import { iRE_Repo } from '../interfaces/realEstateAddress.interface'
 
 const create = async (payload: iCategPost): Promise<iCategReturned> => {
     const categRepository: iCategRepo = AppDataSource.getRepository(Category)
@@ -11,7 +11,6 @@ const create = async (payload: iCategPost): Promise<iCategReturned> => {
 
     return createdCateg
 } 
-
 
 const read = async (): Promise<Category[]> => {
     const categRepository: iCategRepo = AppDataSource.getRepository(Category)

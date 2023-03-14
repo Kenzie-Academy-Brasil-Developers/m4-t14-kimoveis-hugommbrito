@@ -1,6 +1,6 @@
-import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
-import { RealEstate } from "./realEstate.entity";
-import { User } from "./users.entity";
+import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm'
+import { RealEstate } from './realEstate.entity'
+import { User } from './users.entity'
 
 @Entity('schedules_users_properties')
 export class ScheduleUserProperty{

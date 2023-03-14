@@ -1,7 +1,6 @@
-import { Request, Response } from "express"
-import { iRE_postReturn } from "../interfaces/realEstateAddress.interface"
-import { iScheduleReturned } from "../interfaces/schedule.interface"
-import { scheduleService } from "../services"
+import { Request, Response } from 'express'
+import { iRE_postReturn } from '../interfaces/realEstateAddress.interface'
+import { scheduleService } from '../services'
 
 const create = async (req: Request, res: Response): Promise<Response> => {
     const newSchedule: string = await scheduleService.create(req.body, req.user.id)

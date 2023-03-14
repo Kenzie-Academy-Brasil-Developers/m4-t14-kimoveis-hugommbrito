@@ -1,8 +1,8 @@
-import { AppDataSource } from "../data-source";
-import { RealEstate, Schedule, User } from "../entities";
-import { iRE_postReturn, iRE_Repo } from "../interfaces/realEstateAddress.interface";
-import { iSchedulePostRequest, iScheduleRepo, iScheduleReturned } from "../interfaces/schedule.interface";
-import { iUserRepo } from "../interfaces/user.interface";
+import { AppDataSource } from '../data-source'
+import { RealEstate, Schedule, User } from '../entities'
+import { iRE_postReturn, iRE_Repo } from '../interfaces/realEstateAddress.interface'
+import { iSchedulePostRequest, iScheduleRepo } from '../interfaces/schedule.interface'
+import { iUserRepo } from '../interfaces/user.interface'
 
 const create = async (payload: iSchedulePostRequest, userId: number): Promise<string> => {
     const userRepo: iUserRepo = AppDataSource.getRepository(User)

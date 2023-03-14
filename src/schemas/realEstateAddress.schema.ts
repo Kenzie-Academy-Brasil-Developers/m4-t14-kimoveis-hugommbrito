@@ -1,5 +1,5 @@
-import { number, z } from "zod";
-import categorySchema from "./category.schema";
+import { number, z } from 'zod'
+import categorySchema from './category.schema'
 
 const AD_post = z.object({
     street: z.string().max(45),

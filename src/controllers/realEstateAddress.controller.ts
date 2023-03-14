@@ -1,8 +1,6 @@
-import { Request, Response } from "express"
-import { RealEstate } from "../entities"
-import { iRE_postReturn } from "../interfaces/realEstateAddress.interface"
-import { realEstateAddressService } from "../services"
-import categoryController from "./category.controller"
+import { Request, Response } from 'express'
+import { iRE_postReturn } from '../interfaces/realEstateAddress.interface'
+import { realEstateAddressService } from '../services'
 
 const create = async (req: Request, res: Response): Promise<Response> => {
     const newRealEstate: iRE_postReturn = await realEstateAddressService.create(req.body) //TIPAR

@@ -1,7 +1,7 @@
-import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, OneToMany, OneToOne, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
-import { Address } from "./addresses.entity";
-import { Category } from "./categories.entity";
-import { ScheduleUserProperty } from "./schedulesUsersProperties.entity";
+import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, OneToMany, OneToOne, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm'
+import { Address } from './addresses.entity'
+import { Category } from './categories.entity'
+import { ScheduleUserProperty } from './schedulesUsersProperties.entity'
 
 @Entity('real_estate')
 export class RealEstate{

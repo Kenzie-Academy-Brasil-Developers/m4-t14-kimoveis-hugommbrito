@@ -1,6 +1,6 @@
-import { z } from "zod";
-import realEstateAddressSchema from "./realEstateAddress.schema";
-import userSchema from "./user.schema";
+import { z } from 'zod'
+import realEstateAddressSchema from './realEstateAddress.schema'
+import userSchema from './user.schema'
 
 const postRequest = z.object({
     date: z.string(),

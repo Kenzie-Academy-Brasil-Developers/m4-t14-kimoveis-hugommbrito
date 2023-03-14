@@ -1,5 +1,5 @@
-import path from "path";
-import { DataSource, DataSourceOptions } from "typeorm";
+import path from 'path'
+import { DataSource, DataSourceOptions } from 'typeorm'
 import 'dotenv/config'
 
 const dataSourceConfig = ():DataSourceOptions => {
@@ -9,7 +9,7 @@ const dataSourceConfig = ():DataSourceOptions => {
 
     const dbUrl: string | undefined = process.env.DATABASE_URL
 
-    if(!dbUrl) throw new Error("Missing env var: 'DATABASE_URL'")
+    if(!dbUrl) throw new Error('Missing env var: "DATABASE_URL"')
 
     const nodeEnv: string | undefined = process.env.NODE_ENV
 

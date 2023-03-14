@@ -1,6 +1,6 @@
 import { AppDataSource } from '../data-source'
 import { User } from '../entities'
-import { iUserPatch, iUserPost, iUserRepo, iUserReturned } from '../interfaces/user.interface'
+import { iUserPost, iUserRepo, iUserReturned } from '../interfaces/user.interface'
 import { userSchema } from '../schemas'
 
 const create = async (payload: iUserPost): Promise<iUserReturned> => {
@@ -12,6 +12,7 @@ const create = async (payload: iUserPost): Promise<iUserReturned> => {
     const newUserParsed: iUserReturned = userSchema.returned.parse(newUser)
 
     return newUserParsed
+
 } 
 
 const readAll = async (): Promise<User[]> => {
@@ -26,8 +27,6 @@ const readAll = async (): Promise<User[]> => {
 }
 
 const update = async (payload: any, idUser: number): Promise<iUserReturned> => {
-    // console.log(payload)
-    // console.log(idUser)
     const userRepostitory: iUserRepo = AppDataSource.getRepository(User)
     const userToUpdate = await userRepostitory.findOne({
         where: {
@@ -35,14 +34,10 @@ const update = async (payload: any, idUser: number): Promise<iUserReturned> => {
         }
     })
 
-    // console.log(userToUpdate);
     const newUser = userRepostitory.create({
         ...userToUpdate,
         ...payload
     })
-
-    // console.log(newUser);
-    // const newUserParsed = userSchema.post.parse(newUser)
 
     await userRepostitory.save(newUser!)
 

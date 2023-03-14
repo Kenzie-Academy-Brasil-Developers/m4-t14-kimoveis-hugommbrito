@@ -1,6 +1,6 @@
-import { getRounds, hashSync } from "bcryptjs";
-import { BeforeInsert, BeforeUpdate, Column, CreateDateColumn, DeleteDateColumn, Entity, OneToMany, OneToOne, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
-import { ScheduleUserProperty } from "./schedulesUsersProperties.entity";
+import { getRounds, hashSync } from 'bcryptjs'
+import { BeforeInsert, BeforeUpdate, Column, CreateDateColumn, DeleteDateColumn, Entity, OneToMany, OneToOne, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm'
+import { ScheduleUserProperty } from './schedulesUsersProperties.entity'
 
 @Entity('users')
 export class User{
@@ -38,7 +38,6 @@ export class User{
         if(!isEncripted){
             this.password = hashSync(this.password, 10)
         }
-            // this.password = hashSync(this.password, 10)
     }
 
 }

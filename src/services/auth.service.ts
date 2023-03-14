@@ -2,7 +2,7 @@ import { compare } from 'bcryptjs'
 import { AppDataSource } from '../data-source'
 import { User } from '../entities'
 import { AppError } from '../errors'
-import { iAuthLogin, iAuthToken } from '../interfaces/auth.interface'
+import { iAuthLogin } from '../interfaces/auth.interface'
 import { iUserRepo } from '../interfaces/user.interface'
 import jwt from 'jsonwebtoken'
 import 'dotenv/config'
@@ -25,7 +25,6 @@ const login = async (payload: iAuthLogin): Promise<string> => {
     if(!isPasswordMatch){
         throw new AppError('Invalid credentials', 401)
     }
-    // console.log(loggedUser);
     
     const token: string = jwt.sign(
         {
@@ -39,10 +38,6 @@ const login = async (payload: iAuthLogin): Promise<string> => {
             subject: loggedUser.id.toString()
         }
     )
-
-    // const token: iAuthToken = {
-    //     token: jwtGenerated
-    // }
 
     return token
 
