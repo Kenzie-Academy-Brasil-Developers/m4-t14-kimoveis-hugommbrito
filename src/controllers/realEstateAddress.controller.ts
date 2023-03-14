@@ -5,7 +5,7 @@ import { realEstateAddressService } from "../services"
 import categoryController from "./category.controller"
 
 const create = async (req: Request, res: Response): Promise<Response> => {
-    const newRealEstate = await realEstateAddressService.create(req.body) //TIPAR
+    const newRealEstate: iRE_postReturn = await realEstateAddressService.create(req.body) //TIPAR
     return res.status(201).json(newRealEstate)
 }
 
